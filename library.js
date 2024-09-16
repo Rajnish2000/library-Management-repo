@@ -96,8 +96,8 @@ function libraryFormSubmit(e) {
             }else{
                 bookListObj = JSON.parse(bookList);
             }
-            // bookListObj.push(bookname,author,Type);
-            bookListObj.push(book);
+            bookListObj.push([bookname,author,Type]);
+            // bookListObj.push(book);
             localStorage.setItem('Booklist',JSON.stringify(bookListObj));       
         display.add(book);
         display.clear();
@@ -119,15 +119,20 @@ function showBookList(){
     }
     let domString;
     let tablebody = document.getElementById('tableBody');
-    bookListObj.forEach(function(bookListObj) {
+    bookListObj.forEach(function(bookListObj,i) {
         domString = `<tr>
                 <td>${bookListObj[0]}</td>
                 <td>${bookListObj[1]}</td>
                 <td>${bookListObj[2]}</td>
-                <td><button type ="button">delete</button></td>
+                <td><button type ="button" onClick=`deleteItem(${i})`>delete</button></td>
             </tr>`;
         tablebody.innerHTML += domString;    
     });
-    
-
+}
+function deleteItem(index){
+        let bookList = localStorage.getItem('Booklist');
+        bookListObj = JSON.parse(bookList);
+        bookList = bookList.filter((item,i)=> i != index);
+        localStorage.setItem('Booklist',JSON.stringify(bookList));
+        window.location.reload();
 }
