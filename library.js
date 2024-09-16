@@ -119,11 +119,11 @@ function showBookList(){
     }
     let domString;
     let tablebody = document.getElementById('tableBody');
-    bookListObj.forEach(function(bookListObj,i) {
+    bookListObj.forEach(function(book,i) {
         domString = `<tr>
-                <td>${bookListObj[0]}</td>
-                <td>${bookListObj[1]}</td>
-                <td>${bookListObj[2]}</td>
+                <td>${book.bname}</td>
+                <td>${book.author}</td>
+                <td>${book.type}</td>
                 <td><button type ="button" onClick=`deleteItem(${i})`>delete</button></td>
             </tr>`;
         tablebody.innerHTML += domString;    
