@@ -96,7 +96,8 @@ function libraryFormSubmit(e) {
             }else{
                 bookListObj = JSON.parse(bookList);
             }
-            bookListObj.push(bookname,author,Type);
+            // bookListObj.push(bookname,author,Type);
+            bookListObj.push(book);
             localStorage.setItem('Booklist',JSON.stringify(bookListObj));       
         display.add(book);
         display.clear();
